@@ -21,7 +21,8 @@ const EyeIcon = ({visible}: {visible: boolean}) => (
 );
 
 const CheckIcon = ({checked}: {checked: boolean}) => (
-  <Text style={{fontSize: 16, color: checked ? colors.success : colors.gray[300]}}>
+  <Text
+    style={{fontSize: 16, color: checked ? colors.success : colors.gray[300]}}>
     {checked ? '✓' : '○'}
   </Text>
 );
@@ -59,7 +60,12 @@ const SignupScreen: React.FC<SignupScreenProps> = ({updateAuthState}) => {
   };
 
   const handleSubmit = async () => {
-    if (!formData.firstName || !formData.lastName || !formData.email || !formData.password) {
+    if (
+      !formData.firstName ||
+      !formData.lastName ||
+      !formData.email ||
+      !formData.password
+    ) {
       setError('Please fill in all fields');
       return;
     }
@@ -69,7 +75,11 @@ const SignupScreen: React.FC<SignupScreenProps> = ({updateAuthState}) => {
       return;
     }
 
-    if (!passwordStrength.hasLength || !passwordStrength.hasUppercase || !passwordStrength.hasNumber) {
+    if (
+      !passwordStrength.hasLength ||
+      !passwordStrength.hasUppercase ||
+      !passwordStrength.hasNumber
+    ) {
       setError('Password does not meet requirements');
       return;
     }
@@ -100,7 +110,8 @@ const SignupScreen: React.FC<SignupScreenProps> = ({updateAuthState}) => {
           <Text style={styles.logo}>🛡️</Text>
           <Text style={styles.title}>Create your QuickBank account</Text>
           <Text style={styles.subtitle}>
-            Join over 2M users already moving money globally with transparent fees and delivery guarantees.
+            Join over 2M users already moving money globally with transparent
+            fees and delivery guarantees.
           </Text>
         </View>
 
@@ -122,7 +133,7 @@ const SignupScreen: React.FC<SignupScreenProps> = ({updateAuthState}) => {
                 label="First name"
                 placeholder="John"
                 value={formData.firstName}
-                onChangeText={(text) => handleChange('firstName', text)}
+                onChangeText={text => handleChange('firstName', text)}
                 autoCapitalize="words"
               />
             </View>
@@ -131,7 +142,7 @@ const SignupScreen: React.FC<SignupScreenProps> = ({updateAuthState}) => {
                 label="Last name"
                 placeholder="Doe"
                 value={formData.lastName}
-                onChangeText={(text) => handleChange('lastName', text)}
+                onChangeText={text => handleChange('lastName', text)}
                 autoCapitalize="words"
               />
             </View>
@@ -141,7 +152,7 @@ const SignupScreen: React.FC<SignupScreenProps> = ({updateAuthState}) => {
             label="Email address"
             placeholder="you@example.com"
             value={formData.email}
-            onChangeText={(text) => handleChange('email', text)}
+            onChangeText={text => handleChange('email', text)}
             keyboardType="email-address"
             autoCapitalize="none"
             autoComplete="email"
@@ -151,7 +162,7 @@ const SignupScreen: React.FC<SignupScreenProps> = ({updateAuthState}) => {
             label="Password"
             placeholder="Create a strong password"
             value={formData.password}
-            onChangeText={(text) => handleChange('password', text)}
+            onChangeText={text => handleChange('password', text)}
             secureTextEntry={!showPassword}
             rightIcon={<EyeIcon visible={showPassword} />}
             onRightIconPress={() => setShowPassword(!showPassword)}
@@ -161,10 +172,12 @@ const SignupScreen: React.FC<SignupScreenProps> = ({updateAuthState}) => {
             label="Confirm password"
             placeholder="Confirm your password"
             value={formData.confirmPassword}
-            onChangeText={(text) => handleChange('confirmPassword', text)}
+            onChangeText={text => handleChange('confirmPassword', text)}
             secureTextEntry={!showConfirmPassword}
             rightIcon={<EyeIcon visible={showConfirmPassword} />}
-            onRightIconPress={() => setShowConfirmPassword(!showConfirmPassword)}
+            onRightIconPress={() =>
+              setShowConfirmPassword(!showConfirmPassword)
+            }
           />
 
           <View style={styles.passwordRequirements}>
@@ -393,4 +406,3 @@ const styles = StyleSheet.create({
 });
 
 export default SignupScreen;
-

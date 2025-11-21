@@ -123,7 +123,9 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({updateAuthState}) => {
         <TouchableOpacity style={styles.settingRow}>
           <View>
             <Text style={styles.settingLabel}>Active Sessions</Text>
-            <Text style={styles.settingSubtext}>Manage your login sessions</Text>
+            <Text style={styles.settingSubtext}>
+              Manage your login sessions
+            </Text>
           </View>
           <Text style={styles.arrow}>→</Text>
         </TouchableOpacity>
@@ -320,4 +322,3 @@ const styles = StyleSheet.create({
 });
 
 export default SettingsScreen;
-

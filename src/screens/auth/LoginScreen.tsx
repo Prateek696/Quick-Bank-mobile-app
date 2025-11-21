@@ -68,14 +68,16 @@ const LoginScreen: React.FC<LoginScreenProps> = ({updateAuthState}) => {
           <Text style={styles.logo}>💸</Text>
           <Text style={styles.title}>Welcome back to QuickBank</Text>
           <Text style={styles.subtitle}>
-            Sign in to manage transfers, wallets, and recipients across 150+ countries.
+            Sign in to manage transfers, wallets, and recipients across 150+
+            countries.
           </Text>
         </View>
 
         <Card style={styles.card}>
           <Text style={styles.cardTitle}>Sign in to QuickBank</Text>
           <Text style={styles.cardSubtitle}>
-            Manage your transfers, rate alerts, and trusted recipients in seconds.
+            Manage your transfers, rate alerts, and trusted recipients in
+            seconds.
           </Text>
 
           {error ? (
@@ -88,7 +90,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({updateAuthState}) => {
             label="Email address"
             placeholder="you@example.com"
             value={formData.email}
-            onChangeText={(text) => handleChange('email', text)}
+            onChangeText={text => handleChange('email', text)}
             keyboardType="email-address"
             autoCapitalize="none"
             autoComplete="email"
@@ -98,7 +100,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({updateAuthState}) => {
             label="Password"
             placeholder="Enter your password"
             value={formData.password}
-            onChangeText={(text) => handleChange('password', text)}
+            onChangeText={text => handleChange('password', text)}
             secureTextEntry={!showPassword}
             rightIcon={<EyeIcon visible={showPassword} />}
             onRightIconPress={() => setShowPassword(!showPassword)}
@@ -280,4 +282,3 @@ const styles = StyleSheet.create({
 });
 
 export default LoginScreen;
-

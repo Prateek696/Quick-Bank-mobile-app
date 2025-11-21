@@ -1,0 +1,23 @@
+{
+  "java.configuration.updateBuildConfiguration": "automatic",
+  "java.project.sourcePaths": [
+    "android/app/src/main/java"
+  ],
+  "java.project.outputPath": "android/app/build",
+  "java.import.gradle.enabled": true,
+  "java.import.gradle.wrapper.enabled": true,
+  "java.import.gradle.java.home": null,
+  "java.configuration.runtimes": [],
+  "java.clean.workspace": false,
+  "files.exclude": {
+    "**/.gradle": true,
+    "**/build": true,
+    "**/.idea": true,
+    "**/node_modules/**/android/.settings": true
+  },
+  "java.project.referencedLibraries": [
+    "android/app/libs/**/*.jar"
+  ],
+  "java.errors.incompleteClasspath.severity": "ignore",
+  "java.configuration.checkProjectSettingsExclusions": false
+}

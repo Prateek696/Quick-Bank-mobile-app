@@ -29,7 +29,7 @@ export const Input: React.FC<InputProps> = ({
       {label && <Text style={styles.label}>{label}</Text>}
       <View style={styles.inputContainer}>
         <TextInput
-          style={[styles.input, error && styles.inputError, style]}
+          style={[styles.input, error ? styles.inputError : null, style]}
           placeholderTextColor={colors.gray[400]}
           {...props}
         />
@@ -88,4 +88,3 @@ const styles = StyleSheet.create({
     marginTop: 4,
   },
 });
-

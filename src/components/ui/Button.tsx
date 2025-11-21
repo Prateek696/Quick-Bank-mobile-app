@@ -6,6 +6,7 @@ import {
   ActivityIndicator,
   ViewStyle,
   TextStyle,
+  StyleProp,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {colors} from '../../constants/colors';
@@ -16,8 +17,8 @@ interface ButtonProps {
   variant?: 'primary' | 'secondary' | 'outline';
   disabled?: boolean;
   loading?: boolean;
-  style?: ViewStyle;
-  textStyle?: TextStyle;
+  style?: StyleProp<ViewStyle>;
+  textStyle?: StyleProp<TextStyle>;
 }
 
 export const Button: React.FC<ButtonProps> = ({
@@ -140,4 +141,3 @@ const styles = StyleSheet.create({
     opacity: 0.5,
   },
 });
-

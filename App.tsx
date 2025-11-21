@@ -47,11 +47,15 @@ const App: React.FC = () => {
       <Stack.Navigator screenOptions={{headerShown: false}}>
         {isAuthenticated ? (
           <Stack.Screen name="Main">
-            {(props) => <MainNavigator {...props} updateAuthState={updateAuthState} />}
+            {props => (
+              <MainNavigator {...props} updateAuthState={updateAuthState} />
+            )}
           </Stack.Screen>
         ) : (
           <Stack.Screen name="Auth">
-            {(props) => <AuthNavigator {...props} updateAuthState={updateAuthState} />}
+            {props => (
+              <AuthNavigator {...props} updateAuthState={updateAuthState} />
+            )}
           </Stack.Screen>
         )}
       </Stack.Navigator>
@@ -69,4 +73,3 @@ const styles = StyleSheet.create({
 });
 
 export default App;
-

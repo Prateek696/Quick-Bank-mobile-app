@@ -31,6 +31,7 @@ const ProfileScreen: React.FC = () => {
 
   useEffect(() => {
     loadUserData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const loadUserData = async () => {
@@ -97,9 +98,7 @@ const ProfileScreen: React.FC = () => {
             <Input
               label="First Name"
               value={userData.firstName}
-              onChangeText={(text) =>
-                setUserData({...userData, firstName: text})
-              }
+              onChangeText={text => setUserData({...userData, firstName: text})}
               editable={isEditing}
             />
           </View>
@@ -107,9 +106,7 @@ const ProfileScreen: React.FC = () => {
             <Input
               label="Last Name"
               value={userData.lastName}
-              onChangeText={(text) =>
-                setUserData({...userData, lastName: text})
-              }
+              onChangeText={text => setUserData({...userData, lastName: text})}
               editable={isEditing}
             />
           </View>
@@ -118,7 +115,7 @@ const ProfileScreen: React.FC = () => {
         <Input
           label="Email"
           value={userData.email}
-          onChangeText={(text) => setUserData({...userData, email: text})}
+          onChangeText={text => setUserData({...userData, email: text})}
           editable={isEditing}
           keyboardType="email-address"
         />
@@ -126,7 +123,7 @@ const ProfileScreen: React.FC = () => {
         <Input
           label="Phone"
           value={userData.phone}
-          onChangeText={(text) => setUserData({...userData, phone: text})}
+          onChangeText={text => setUserData({...userData, phone: text})}
           editable={isEditing}
           keyboardType="phone-pad"
         />
@@ -134,9 +131,7 @@ const ProfileScreen: React.FC = () => {
         <Input
           label="Date of Birth"
           value={userData.dateOfBirth}
-          onChangeText={(text) =>
-            setUserData({...userData, dateOfBirth: text})
-          }
+          onChangeText={text => setUserData({...userData, dateOfBirth: text})}
           editable={isEditing}
         />
       </Card>
@@ -148,14 +143,14 @@ const ProfileScreen: React.FC = () => {
         <Input
           label="Country"
           value={userData.country}
-          onChangeText={(text) => setUserData({...userData, country: text})}
+          onChangeText={text => setUserData({...userData, country: text})}
           editable={isEditing}
         />
 
         <Input
           label="Address"
           value={userData.address}
-          onChangeText={(text) => setUserData({...userData, address: text})}
+          onChangeText={text => setUserData({...userData, address: text})}
           editable={isEditing}
         />
 
@@ -164,7 +159,7 @@ const ProfileScreen: React.FC = () => {
             <Input
               label="City"
               value={userData.city}
-              onChangeText={(text) => setUserData({...userData, city: text})}
+              onChangeText={text => setUserData({...userData, city: text})}
               editable={isEditing}
             />
           </View>
@@ -172,7 +167,7 @@ const ProfileScreen: React.FC = () => {
             <Input
               label="State"
               value={userData.state}
-              onChangeText={(text) => setUserData({...userData, state: text})}
+              onChangeText={text => setUserData({...userData, state: text})}
               editable={isEditing}
             />
           </View>
@@ -180,9 +175,7 @@ const ProfileScreen: React.FC = () => {
             <Input
               label="Zip Code"
               value={userData.zipCode}
-              onChangeText={(text) =>
-                setUserData({...userData, zipCode: text})
-              }
+              onChangeText={text => setUserData({...userData, zipCode: text})}
               editable={isEditing}
             />
           </View>
@@ -393,4 +386,3 @@ const styles = StyleSheet.create({
 });
 
 export default ProfileScreen;
-

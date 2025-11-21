@@ -18,7 +18,9 @@ const DashboardScreen: React.FC = () => {
   const navigation = useNavigation();
   const [showBalance, setShowBalance] = useState(true);
   const [balance, setBalance] = useState(5432.5);
-  const [recentTransactions, setRecentTransactions] = useState<Transaction[]>([]);
+  const [recentTransactions, setRecentTransactions] = useState<Transaction[]>(
+    [],
+  );
   const [savedRecipients, setSavedRecipients] = useState<Recipient[]>([]);
   const [refreshing, setRefreshing] = useState(false);
 
@@ -48,16 +50,33 @@ const DashboardScreen: React.FC = () => {
   };
 
   const quickActions = [
-    {icon: '💸', label: 'Send Money', screen: 'SendMoney', color: colors.blue[600]},
-    {icon: '📥', label: 'Receive', screen: 'ReceiveMoney', color: colors.success},
-    {icon: '👥', label: 'Recipients', screen: 'Recipients', color: colors.warning},
+    {
+      icon: '💸',
+      label: 'Send Money',
+      screen: 'SendMoney',
+      color: colors.blue[600],
+    },
+    {
+      icon: '📥',
+      label: 'Receive',
+      screen: 'ReceiveMoney',
+      color: colors.success,
+    },
+    {
+      icon: '👥',
+      label: 'Recipients',
+      screen: 'Recipients',
+      color: colors.warning,
+    },
     {icon: '📊', label: 'Rates', screen: 'Transactions', color: colors.error},
   ];
 
   return (
     <ScrollView
       style={styles.container}
-      refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
+      refreshControl={
+        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+      }
       showsVerticalScrollIndicator={false}>
       {/* Header */}
       <View style={styles.header}>
@@ -85,7 +104,12 @@ const DashboardScreen: React.FC = () => {
             <Text style={styles.balanceLabel}>Your Balance</Text>
             <View style={styles.balanceRow}>
               <Text style={styles.balanceAmount}>
-                {showBalance ? `$${balance.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}` : '••••••••'}
+                {showBalance
+                  ? `$${balance.toLocaleString('en-US', {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    })}`
+                  : '••••••••'}
               </Text>
               <TouchableOpacity
                 onPress={() => setShowBalance(!showBalance)}
@@ -122,7 +146,11 @@ const DashboardScreen: React.FC = () => {
             key={index}
             onPress={() => navigation.navigate(action.screen as never)}
             style={styles.actionCard}>
-            <View style={[styles.actionIcon, {backgroundColor: action.color + '20'}]}>
+            <View
+              style={[
+                styles.actionIcon,
+                {backgroundColor: action.color + '20'},
+              ]}>
               <Text style={styles.actionIconText}>{action.icon}</Text>
             </View>
             <Text style={styles.actionLabel}>{action.label}</Text>
@@ -140,7 +168,7 @@ const DashboardScreen: React.FC = () => {
           </TouchableOpacity>
         </View>
 
-        {recentTransactions.map((transaction) => (
+        {recentTransactions.map(transaction => (
           <View key={transaction.id} style={styles.transactionItem}>
             <View style={styles.transactionLeft}>
               <View
@@ -150,10 +178,14 @@ const DashboardScreen: React.FC = () => {
                     ? {backgroundColor: colors.error + '20'}
                     : {backgroundColor: colors.success + '20'},
                 ]}>
-                <Text style={styles.transactionFlag}>{transaction.flag || '🌍'}</Text>
+                <Text style={styles.transactionFlag}>
+                  {transaction.flag || '🌍'}
+                </Text>
               </View>
               <View>
-                <Text style={styles.transactionName}>{transaction.recipient}</Text>
+                <Text style={styles.transactionName}>
+                  {transaction.recipient}
+                </Text>
                 <Text style={styles.transactionDate}>{transaction.date}</Text>
               </View>
             </View>
@@ -161,7 +193,9 @@ const DashboardScreen: React.FC = () => {
               <Text
                 style={[
                   styles.transactionAmount,
-                  transaction.type === 'sent' ? styles.amountSent : styles.amountReceived,
+                  transaction.type === 'sent'
+                    ? styles.amountSent
+                    : styles.amountReceived,
                 ]}>
                 {transaction.type === 'sent' ? '-' : '+'} ${transaction.amount}
               </Text>
@@ -183,12 +217,13 @@ const DashboardScreen: React.FC = () => {
       <Card style={styles.sectionCard}>
         <View style={styles.sectionHeader}>
           <Text style={styles.sectionTitle}>Saved Recipients</Text>
-          <TouchableOpacity onPress={() => navigation.navigate('Recipients' as never)}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('Recipients' as never)}>
             <Text style={styles.addButton}>+</Text>
           </TouchableOpacity>
         </View>
 
-        {savedRecipients.map((recipient) => (
+        {savedRecipients.map(recipient => (
           <TouchableOpacity
             key={recipient.id}
             style={styles.recipientItem}
@@ -493,4 +528,3 @@ const styles = StyleSheet.create({
 });
 
 export default DashboardScreen;
-

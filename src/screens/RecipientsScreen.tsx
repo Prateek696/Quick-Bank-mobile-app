@@ -10,7 +10,6 @@ import {
 import {useNavigation} from '@react-navigation/native';
 import {Card} from '../components/ui/Card';
 import {Button} from '../components/ui/Button';
-import {Input} from '../components/ui/Input';
 import {colors} from '../constants/colors';
 import {recipientsAPI} from '../services/api';
 import type {Recipient} from '../services/api';
@@ -30,13 +29,13 @@ const RecipientsScreen: React.FC = () => {
   };
 
   const filteredRecipients = recipients.filter(
-    (r) =>
+    r =>
       r.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       r.country.toLowerCase().includes(searchTerm.toLowerCase()),
   );
 
   const handleDelete = (id: number) => {
-    setRecipients(recipients.filter((r) => r.id !== id));
+    setRecipients(recipients.filter(r => r.id !== id));
   };
 
   return (
@@ -73,14 +72,16 @@ const RecipientsScreen: React.FC = () => {
       {/* Recipients List */}
       {filteredRecipients.length > 0 ? (
         <View style={styles.recipientsGrid}>
-          {filteredRecipients.map((recipient) => (
+          {filteredRecipients.map(recipient => (
             <Card key={recipient.id} style={styles.recipientCard}>
               <View style={styles.recipientHeader}>
                 <View style={styles.recipientInfo}>
                   <Text style={styles.recipientFlag}>{recipient.flag}</Text>
                   <View>
                     <Text style={styles.recipientName}>{recipient.name}</Text>
-                    <Text style={styles.recipientCountry}>{recipient.country}</Text>
+                    <Text style={styles.recipientCountry}>
+                      {recipient.country}
+                    </Text>
                   </View>
                 </View>
                 <TouchableOpacity>
@@ -91,7 +92,9 @@ const RecipientsScreen: React.FC = () => {
               <View style={styles.recipientDetails}>
                 <View style={styles.recipientDetailRow}>
                   <Text style={styles.recipientDetailLabel}>Bank</Text>
-                  <Text style={styles.recipientDetailValue}>{recipient.bank}</Text>
+                  <Text style={styles.recipientDetailValue}>
+                    {recipient.bank}
+                  </Text>
                 </View>
                 <View style={styles.recipientDetailRow}>
                   <Text style={styles.recipientDetailLabel}>Account</Text>
@@ -145,7 +148,7 @@ const RecipientsScreen: React.FC = () => {
           <Text style={styles.statIcon}>🌍</Text>
           <Text style={styles.statLabel}>Countries</Text>
           <Text style={styles.statValue}>
-            {new Set(recipients.map((r) => r.country)).size}
+            {new Set(recipients.map(r => r.country)).size}
           </Text>
         </Card>
         <Card style={styles.statCard}>
@@ -341,4 +344,3 @@ const styles = StyleSheet.create({
 });
 
 export default RecipientsScreen;
-

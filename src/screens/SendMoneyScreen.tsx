@@ -19,7 +19,9 @@ import LinearGradient from 'react-native-linear-gradient';
 const SendMoneyScreen: React.FC = () => {
   const navigation = useNavigation();
   const [step, setStep] = useState(1);
-  const [selectedRecipient, setSelectedRecipient] = useState<Recipient | null>(null);
+  const [selectedRecipient, setSelectedRecipient] = useState<Recipient | null>(
+    null,
+  );
   const [recipients, setRecipients] = useState<Recipient[]>([]);
   const [amount, setAmount] = useState('250');
   const [purpose, setPurpose] = useState('');
@@ -53,7 +55,9 @@ const SendMoneyScreen: React.FC = () => {
   };
 
   const handleSend = async () => {
-    if (!selectedRecipient || !parsedAmount || !purpose) return;
+    if (!selectedRecipient || !parsedAmount || !purpose) {
+      return;
+    }
 
     setLoading(true);
     try {
@@ -89,13 +93,10 @@ const SendMoneyScreen: React.FC = () => {
 
       {/* Step Indicator */}
       <View style={styles.stepIndicator}>
-        {[1, 2, 3, 4].map((s) => (
+        {[1, 2, 3, 4].map(s => (
           <View key={s} style={styles.stepContainer}>
             <View
-              style={[
-                styles.stepCircle,
-                step >= s && styles.stepCircleActive,
-              ]}>
+              style={[styles.stepCircle, step >= s && styles.stepCircleActive]}>
               <Text
                 style={[
                   styles.stepNumber,
@@ -106,10 +107,7 @@ const SendMoneyScreen: React.FC = () => {
             </View>
             {s < 4 && (
               <View
-                style={[
-                  styles.stepLine,
-                  step > s && styles.stepLineActive,
-                ]}
+                style={[styles.stepLine, step > s && styles.stepLineActive]}
               />
             )}
           </View>
@@ -124,13 +122,14 @@ const SendMoneyScreen: React.FC = () => {
             Select a saved recipient or add a new one
           </Text>
 
-          {recipients.map((recipient) => (
+          {recipients.map(recipient => (
             <TouchableOpacity
               key={recipient.id}
               onPress={() => setSelectedRecipient(recipient)}
               style={[
                 styles.recipientOption,
-                selectedRecipient?.id === recipient.id && styles.recipientOptionSelected,
+                selectedRecipient?.id === recipient.id &&
+                  styles.recipientOptionSelected,
               ]}>
               <Text style={styles.recipientFlag}>{recipient.flag}</Text>
               <View style={styles.recipientInfo}>
@@ -142,7 +141,8 @@ const SendMoneyScreen: React.FC = () => {
               <View
                 style={[
                   styles.radio,
-                  selectedRecipient?.id === recipient.id && styles.radioSelected,
+                  selectedRecipient?.id === recipient.id &&
+                    styles.radioSelected,
                 ]}>
                 {selectedRecipient?.id === recipient.id && (
                   <Text style={styles.radioCheck}>✓</Text>
@@ -177,7 +177,7 @@ const SendMoneyScreen: React.FC = () => {
               label="Amount to send"
               placeholder="0.00"
               value={amount}
-              onChangeText={(text) => {
+              onChangeText={text => {
                 if (/^\d*\.?\d{0,2}$/.test(text)) {
                   setAmount(text);
                 }
@@ -227,7 +227,8 @@ const SendMoneyScreen: React.FC = () => {
               {formatCurrency(convertedAmount, 'INR')}
             </Text>
             <Text style={styles.conversionRate}>
-              Rate: 1 USD = {conversionRate.toFixed(2)} INR • Fee: {formatCurrency(fee, 'USD')}
+              Rate: 1 USD = {conversionRate.toFixed(2)} INR • Fee:{' '}
+              {formatCurrency(fee, 'USD')}
             </Text>
           </LinearGradient>
         </View>
@@ -295,7 +296,7 @@ const SendMoneyScreen: React.FC = () => {
             {id: 1, label: 'Visa ending in 4242', desc: 'Instant'},
             {id: 2, label: 'Bank account — Chase', desc: '1-2 hours'},
             {id: 3, label: 'Apple Pay', desc: 'Instant'},
-          ].map((method) => (
+          ].map(method => (
             <TouchableOpacity key={method.id} style={styles.paymentMethod}>
               <View>
                 <Text style={styles.paymentLabel}>{method.label}</Text>
@@ -598,4 +599,3 @@ const styles = StyleSheet.create({
 });
 
 export default SendMoneyScreen;
-

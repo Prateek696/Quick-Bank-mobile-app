@@ -16,8 +16,12 @@ import type {Transaction} from '../services/api';
 const TransactionsScreen: React.FC = () => {
   const navigation = useNavigation();
   const [transactions, setTransactions] = useState<Transaction[]>([]);
-  const [filterType, setFilterType] = useState<'all' | 'sent' | 'received'>('all');
-  const [filterStatus, setFilterStatus] = useState<'all' | 'completed' | 'pending' | 'failed'>('all');
+  const [filterType, setFilterType] = useState<'all' | 'sent' | 'received'>(
+    'all',
+  );
+  const [filterStatus] = useState<'all' | 'completed' | 'pending' | 'failed'>(
+    'all',
+  );
 
   useEffect(() => {
     loadTransactions();
@@ -28,7 +32,7 @@ const TransactionsScreen: React.FC = () => {
     setTransactions(data);
   };
 
-  const filteredTransactions = transactions.filter((tx) => {
+  const filteredTransactions = transactions.filter(tx => {
     const typeMatch = filterType === 'all' || tx.type === filterType;
     const statusMatch = filterStatus === 'all' || tx.status === filterStatus;
     return typeMatch && statusMatch;
@@ -36,10 +40,10 @@ const TransactionsScreen: React.FC = () => {
 
   const stats = {
     totalSent: transactions
-      .filter((t) => t.type === 'sent')
+      .filter(t => t.type === 'sent')
       .reduce((sum, t) => sum + t.amount, 0),
     totalReceived: transactions
-      .filter((t) => t.type === 'received')
+      .filter(t => t.type === 'received')
       .reduce((sum, t) => sum + t.amount, 0),
     monthlyAverage: 1240,
   };
@@ -189,7 +193,7 @@ const TransactionsScreen: React.FC = () => {
         <FlatList
           data={filteredTransactions}
           renderItem={renderTransaction}
-          keyExtractor={(item) => item.id.toString()}
+          keyExtractor={item => item.id.toString()}
           scrollEnabled={false}
         />
       </Card>
@@ -334,4 +338,3 @@ const styles = StyleSheet.create({
 });
 
 export default TransactionsScreen;
-

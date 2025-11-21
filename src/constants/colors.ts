@@ -34,4 +34,3 @@ export const colors = {
     900: '#1E3A8A',
   },
 };
-

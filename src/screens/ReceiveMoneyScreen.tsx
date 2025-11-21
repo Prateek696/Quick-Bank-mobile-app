@@ -16,7 +16,7 @@ import LinearGradient from 'react-native-linear-gradient';
 
 const ReceiveMoneyScreen: React.FC = () => {
   const navigation = useNavigation();
-  const [copied, setCopied] = useState<string | null>(null);
+  const [, setCopied] = useState<string | null>(null);
 
   const accountDetails = {
     accountNumber: '1234567890',
@@ -58,7 +58,8 @@ const ReceiveMoneyScreen: React.FC = () => {
       <Card style={styles.welcomeCard}>
         <Text style={styles.welcomeTitle}>Receive Money Anytime</Text>
         <Text style={styles.welcomeText}>
-          Share your account details with anyone to receive money from anywhere in the world.
+          Share your account details with anyone to receive money from anywhere
+          in the world.
         </Text>
       </Card>
 
@@ -76,9 +77,13 @@ const ReceiveMoneyScreen: React.FC = () => {
         <View style={styles.detailItem}>
           <Text style={styles.detailLabel}>Account Number</Text>
           <View style={styles.detailValueContainer}>
-            <Text style={styles.detailValue}>{accountDetails.accountNumber}</Text>
+            <Text style={styles.detailValue}>
+              {accountDetails.accountNumber}
+            </Text>
             <TouchableOpacity
-              onPress={() => handleCopy(accountDetails.accountNumber, 'Account Number')}>
+              onPress={() =>
+                handleCopy(accountDetails.accountNumber, 'Account Number')
+              }>
               <Text style={styles.copyIcon}>📋</Text>
             </TouchableOpacity>
           </View>
@@ -87,9 +92,13 @@ const ReceiveMoneyScreen: React.FC = () => {
         <View style={styles.detailItem}>
           <Text style={styles.detailLabel}>Routing Number</Text>
           <View style={styles.detailValueContainer}>
-            <Text style={styles.detailValue}>{accountDetails.routingNumber}</Text>
+            <Text style={styles.detailValue}>
+              {accountDetails.routingNumber}
+            </Text>
             <TouchableOpacity
-              onPress={() => handleCopy(accountDetails.routingNumber, 'Routing Number')}>
+              onPress={() =>
+                handleCopy(accountDetails.routingNumber, 'Routing Number')
+              }>
               <Text style={styles.copyIcon}>📋</Text>
             </TouchableOpacity>
           </View>
@@ -100,7 +109,9 @@ const ReceiveMoneyScreen: React.FC = () => {
           <View style={styles.detailValueContainer}>
             <Text style={styles.detailValue}>{accountDetails.swiftCode}</Text>
             <TouchableOpacity
-              onPress={() => handleCopy(accountDetails.swiftCode, 'SWIFT Code')}>
+              onPress={() =>
+                handleCopy(accountDetails.swiftCode, 'SWIFT Code')
+              }>
               <Text style={styles.copyIcon}>📋</Text>
             </TouchableOpacity>
           </View>
@@ -133,11 +144,7 @@ const ReceiveMoneyScreen: React.FC = () => {
             variant="secondary"
             style={styles.button}
           />
-          <Button
-            title="Share"
-            onPress={() => {}}
-            style={styles.button}
-          />
+          <Button title="Share" onPress={() => {}} style={styles.button} />
         </View>
       </Card>
 
@@ -165,7 +172,7 @@ const ReceiveMoneyScreen: React.FC = () => {
             title: 'Get Notified',
             desc: 'Receive instant notification when funds arrive',
           },
-        ].map((item) => (
+        ].map(item => (
           <View key={item.step} style={styles.stepItem}>
             <View style={styles.stepNumber}>
               <Text style={styles.stepNumberText}>{item.step}</Text>
@@ -336,4 +343,3 @@ const styles = StyleSheet.create({
 });
 
 export default ReceiveMoneyScreen;
-

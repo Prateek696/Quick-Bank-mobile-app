@@ -27,4 +27,3 @@ const AuthNavigator: React.FC<AuthNavigatorProps> = ({updateAuthState}) => {
 };
 
 export default AuthNavigator;
-

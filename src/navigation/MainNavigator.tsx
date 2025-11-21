@@ -42,7 +42,9 @@ const TabNavigator = () => {
         component={DashboardScreen}
         options={{
           tabBarLabel: 'Home',
-          tabBarIcon: ({color}) => <Text style={{color, fontSize: 20}}>🏠</Text>,
+          tabBarIcon: ({color}) => (
+            <Text style={{color, fontSize: 20}}>🏠</Text>
+          ),
         }}
       />
       <Tab.Screen
@@ -50,7 +52,9 @@ const TabNavigator = () => {
         component={SendMoneyScreen}
         options={{
           tabBarLabel: 'Send',
-          tabBarIcon: ({color}) => <Text style={{color, fontSize: 20}}>💸</Text>,
+          tabBarIcon: ({color}) => (
+            <Text style={{color, fontSize: 20}}>💸</Text>
+          ),
         }}
       />
       <Tab.Screen
@@ -58,7 +62,9 @@ const TabNavigator = () => {
         component={TransactionsScreen}
         options={{
           tabBarLabel: 'History',
-          tabBarIcon: ({color}) => <Text style={{color, fontSize: 20}}>📊</Text>,
+          tabBarIcon: ({color}) => (
+            <Text style={{color, fontSize: 20}}>📊</Text>
+          ),
         }}
       />
       <Tab.Screen
@@ -66,7 +72,9 @@ const TabNavigator = () => {
         component={ProfileScreen}
         options={{
           tabBarLabel: 'Profile',
-          tabBarIcon: ({color}) => <Text style={{color, fontSize: 20}}>👤</Text>,
+          tabBarIcon: ({color}) => (
+            <Text style={{color, fontSize: 20}}>👤</Text>
+          ),
         }}
       />
     </Tab.Navigator>
@@ -91,4 +99,3 @@ const MainNavigator: React.FC<MainNavigatorProps> = ({updateAuthState}) => {
 };
 
 export default MainNavigator;
-
