@@ -5,11 +5,18 @@ import {
   TouchableOpacity,
   StyleSheet,
   ScrollView,
+  SafeAreaView,
+  StatusBar,
 } from 'react-native';
 
-const PrivacyScreen: React.FC = () => {
+interface PrivacyScreenProps {
+  navigation?: any;
+}
+
+const PrivacyScreen: React.FC<PrivacyScreenProps> = ({navigation}) => {
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
+      <StatusBar barStyle="dark-content" backgroundColor="#FFFFFF" />
       <ScrollView
         contentContainerStyle={styles.scrollContent}
         showsVerticalScrollIndicator={false}>
@@ -19,14 +26,16 @@ const PrivacyScreen: React.FC = () => {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
           tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
           veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-          ea commodo consequat.
+          ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+          velit esse cillum dolore eu fugiat nulla pariatur.
         </Text>
 
         <Text style={styles.paragraph}>
-          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-          dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-          non proident, sunt in culpa qui officia deserunt mollit anim id est
-          laborum.
+          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+          deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste
+          natus error sit voluptatem accusantium doloremque laudantium, totam rem
+          aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto
+          beatae vitae dicta sunt explicabo.
         </Text>
 
         <View style={styles.buttonContainer}>
@@ -43,7 +52,7 @@ const PrivacyScreen: React.FC = () => {
           <Text style={styles.preferenceText}>Preference</Text>
         </TouchableOpacity>
       </ScrollView>
-    </View>
+    </SafeAreaView>
   );
 };
 
@@ -54,7 +63,7 @@ const styles = StyleSheet.create({
   },
   scrollContent: {
     paddingHorizontal: 24,
-    paddingTop: 60,
+    paddingTop: 20,
     paddingBottom: 40,
   },
   title: {
@@ -63,12 +72,13 @@ const styles = StyleSheet.create({
     color: '#1E3A8A',
     textAlign: 'center',
     marginBottom: 32,
+    marginTop: 20,
   },
   paragraph: {
     fontSize: 16,
     color: '#1F2937',
     lineHeight: 24,
-    marginBottom: 20,
+    marginBottom: 24,
     textAlign: 'left',
   },
   buttonContainer: {
@@ -96,15 +106,15 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '600',
     color: '#FFFFFF',
-    textTransform: 'uppercase',
   },
   preferenceLink: {
     alignItems: 'center',
     marginTop: 8,
+    marginBottom: 20,
   },
   preferenceText: {
     fontSize: 16,
-    fontWeight: '600',
+    fontWeight: '500',
     color: '#1F2937',
   },
 });

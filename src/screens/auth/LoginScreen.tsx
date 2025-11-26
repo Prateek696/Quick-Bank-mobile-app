@@ -14,9 +14,10 @@ import {storage} from '../../services/storage';
 
 interface LoginScreenProps {
   updateAuthState?: (authenticated: boolean) => void;
+  navigation?: any;
 }
 
-const LoginScreen: React.FC<LoginScreenProps> = ({updateAuthState}) => {
+const LoginScreen: React.FC<LoginScreenProps> = ({updateAuthState, navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -86,10 +87,12 @@ const LoginScreen: React.FC<LoginScreenProps> = ({updateAuthState}) => {
 
         {/* Bottom Links */}
         <View style={styles.bottomLinks}>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => navigation?.navigate('CountryResidence')}
+            activeOpacity={0.7}>
             <Text style={styles.linkText}>Open Account</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.cookieLink}>
+          <TouchableOpacity activeOpacity={0.7}>
             <Text style={styles.linkText}>Update Cookie Settings</Text>
           </TouchableOpacity>
         </View>
@@ -165,11 +168,8 @@ const styles = StyleSheet.create({
   },
   linkText: {
     fontSize: 14,
-    color: '#6B7280',
+    color: 'rgba(202, 202, 202, 1)',
     textAlign: 'center',
-  },
-  cookieLink: {
-    marginTop: 8,
   },
 });
 

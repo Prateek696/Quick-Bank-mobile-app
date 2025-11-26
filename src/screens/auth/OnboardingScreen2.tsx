@@ -5,7 +5,13 @@ import {
   TouchableOpacity,
   StyleSheet,
   SafeAreaView,
+  Image,
+  Dimensions,
 } from 'react-native';
+
+const {width: SCREEN_WIDTH} = Dimensions.get('window');
+const DESIGN_WIDTH = 375;
+const scale = (size: number) => (SCREEN_WIDTH / DESIGN_WIDTH) * size;
 
 interface OnboardingScreen2Props {
   navigation?: any;
@@ -25,9 +31,13 @@ const OnboardingScreen2: React.FC<OnboardingScreen2Props> = ({navigation}) => {
         {/* Title */}
         <Text style={styles.title}>We are open when you need us 24/7</Text>
 
-        {/* Illustration Placeholder */}
-        <View style={styles.illustration}>
-          <Text style={styles.illustrationText}>🌍💱💬</Text>
+        {/* Illustration Image */}
+        <View style={styles.illustrationContainer}>
+          <Image
+            source={require('../../assets/images/onboarding2_illustration.png.jpg')}
+            style={styles.illustrationImage}
+            resizeMode="contain"
+          />
         </View>
 
         {/* Subtitle */}
@@ -39,8 +49,6 @@ const OnboardingScreen2: React.FC<OnboardingScreen2Props> = ({navigation}) => {
         <View style={styles.pagination}>
           <View style={styles.dot} />
           <View style={[styles.dot, styles.activeDot]} />
-          <View style={styles.dot} />
-          <View style={styles.dot} />
           <View style={styles.dot} />
         </View>
 
@@ -83,14 +91,16 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginBottom: 40,
   },
-  illustration: {
-    height: 300,
+  illustrationContainer: {
+    height: scale(310),
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 24,
+    marginBottom: scale(24),
+    width: '100%',
   },
-  illustrationText: {
-    fontSize: 80,
+  illustrationImage: {
+    width: '100%',
+    height: '100%',
   },
   subtitle: {
     fontSize: 18,

@@ -1,7 +1,7 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, Image} from 'react-native';
 import {colors} from '../constants/colors';
 import PrivacyScreen from '../screens/PrivacyScreen';
 import ProfileScreen from '../screens/ProfileScreen';
@@ -19,10 +19,16 @@ import SettingsScreen from '../screens/SettingsScreen';
 import SupportScreen from '../screens/SupportScreen';
 import LegalDocumentsScreen from '../screens/LegalDocumentsScreen';
 import TermsAndConditionsScreen from '../screens/auth/TermsAndConditionsScreen';
+import DatePickerScreen from '../screens/auth/DatePickerScreen';
+import CountrySelectionScreen from '../screens/auth/CountrySelectionScreen';
 import ReceiveBankSelectionScreen from '../screens/ReceiveBankSelectionScreen';
 import ReceiveMoneyCurrencyScreen from '../screens/ReceiveMoneyCurrencyScreen';
 import ReceiveDeliveryMethodScreen from '../screens/ReceiveDeliveryMethodScreen';
 import CardsScreen from '../screens/CardsScreen';
+import SendScreen from '../screens/SendScreen';
+import ReceiveScreen from '../screens/ReceiveScreen';
+import ManageScreen from '../screens/ManageScreen';
+import EditProfileScreen from '../screens/EditProfileScreen';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -63,28 +69,54 @@ const TabNavigator = () => {
         component={DashboardScreen}
         options={{
           tabBarLabel: 'Home',
-          tabBarIcon: ({color}) => (
-            <Text style={{color, fontSize: 20}}>🏠</Text>
+          tabBarIcon: ({focused}) => (
+            <Image
+              source={require('../assets/images/WhatsApp Image 2025-11-27 at 02.21.28_f4187665.jpg')}
+              style={[styles.tabIcon, {opacity: focused ? 1 : 0.5}]}
+              resizeMode="contain"
+            />
           ),
         }}
       />
       <Tab.Screen
-        name="Referrals"
-        component={ReferralsScreen}
+        name="Send"
+        component={SendScreen}
         options={{
-          tabBarLabel: 'Referrals',
-          tabBarIcon: ({color}) => (
-            <Text style={{color, fontSize: 20}}>🎁</Text>
+          tabBarLabel: 'Send',
+          tabBarIcon: ({focused}) => (
+            <Image
+              source={require('../assets/images/WhatsApp Image 2025-11-27 at 02.09.12_d2c1ab82.jpg')}
+              style={[styles.tabIcon, {opacity: focused ? 1 : 0.5}]}
+              resizeMode="contain"
+            />
           ),
         }}
       />
       <Tab.Screen
-        name="Account"
-        component={AccountManageScreen}
+        name="Receive"
+        component={ReceiveScreen}
         options={{
-          tabBarLabel: 'Account',
-          tabBarIcon: ({color}) => (
-            <Text style={{color, fontSize: 20}}>👤</Text>
+          tabBarLabel: 'Receive',
+          tabBarIcon: ({focused}) => (
+            <Image
+              source={require('../assets/images/WhatsApp Image 2025-11-27 at 02.14.41_2c00a054.jpg')}
+              style={[styles.tabIcon, {opacity: focused ? 1 : 0.5}]}
+              resizeMode="contain"
+            />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Manage"
+        component={ProfileScreen}
+        options={{
+          tabBarLabel: 'Profile',
+          tabBarIcon: ({focused}) => (
+            <Image
+              source={require('../assets/images/WhatsApp Image 2025-11-27 at 02.26.50_cba4e2fa.jpg')}
+              style={[styles.tabIcon, {opacity: focused ? 1 : 0.5}]}
+              resizeMode="contain"
+            />
           ),
         }}
       />
@@ -118,6 +150,9 @@ const MainNavigator: React.FC<MainNavigatorProps> = ({updateAuthState}) => {
       <Stack.Screen name="ReceiveMoneyCurrency" component={ReceiveMoneyCurrencyScreen} />
       <Stack.Screen name="ReceiveDeliveryMethod" component={ReceiveDeliveryMethodScreen} />
       <Stack.Screen name="Cards" component={CardsScreen} />
+      <Stack.Screen name="EditProfile" component={EditProfileScreen} />
+      <Stack.Screen name="DatePicker" component={DatePickerScreen} />
+      <Stack.Screen name="CountrySelection" component={CountrySelectionScreen} />
     </Stack.Navigator>
   );
 };
@@ -138,6 +173,10 @@ const styles = StyleSheet.create({
   subtext: {
     fontSize: 14,
     color: '#666666',
+  },
+  tabIcon: {
+    width: 24,
+    height: 24,
   },
 });
 

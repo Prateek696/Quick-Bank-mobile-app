@@ -56,6 +56,13 @@ const EmailSignupScreen: React.FC<EmailSignupScreenProps> = ({navigation}) => {
           <Text style={styles.promoText}>Add a promo code</Text>
         </TouchableOpacity>
 
+        {/* Terms & Conditions Link */}
+        <TouchableOpacity
+          style={styles.termsLink}
+          onPress={() => navigation?.navigate('TermsAndConditions')}>
+          <Text style={styles.termsLinkText}>Terms & Conditions</Text>
+        </TouchableOpacity>
+
         {/* Terms & Conditions Checkbox */}
         <TouchableOpacity
           style={styles.checkboxContainer}
@@ -67,7 +74,7 @@ const EmailSignupScreen: React.FC<EmailSignupScreenProps> = ({navigation}) => {
             ]}>
             {termsAccepted && <Text style={styles.checkmark}>✓</Text>}
           </View>
-          <Text style={styles.checkboxLabel}>Terms & Conditions</Text>
+          <Text style={styles.checkboxLabel}>I accept the Terms & Conditions</Text>
         </TouchableOpacity>
 
         {/* Continue Button */}
@@ -146,6 +153,14 @@ const styles = StyleSheet.create({
   promoText: {
     fontSize: 16,
     color: '#374151',
+  },
+  termsLink: {
+    marginBottom: 16,
+  },
+  termsLinkText: {
+    fontSize: 14,
+    color: '#4A69BD',
+    textDecorationLine: 'underline',
   },
   checkboxContainer: {
     flexDirection: 'row',

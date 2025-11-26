@@ -5,7 +5,13 @@ import {
   TouchableOpacity,
   StyleSheet,
   SafeAreaView,
+  Image,
+  Dimensions,
 } from 'react-native';
+
+const {width: SCREEN_WIDTH} = Dimensions.get('window');
+const DESIGN_WIDTH = 375;
+const scale = (size: number) => (SCREEN_WIDTH / DESIGN_WIDTH) * size;
 
 interface OnboardingScreen3Props {
   navigation?: any;
@@ -25,9 +31,13 @@ const OnboardingScreen3: React.FC<OnboardingScreen3Props> = ({navigation}) => {
         {/* Title */}
         <Text style={styles.title}>Enjoy free ATM withdrawals</Text>
 
-        {/* Illustration Placeholder */}
-        <View style={styles.illustration}>
-          <Text style={styles.illustrationText}>💳📱</Text>
+        {/* Illustration Image */}
+        <View style={styles.illustrationContainer}>
+          <Image
+            source={require('../../assets/images/onboarding3_illustration.png.jpg')}
+            style={styles.illustrationImage}
+            resizeMode="contain"
+          />
         </View>
 
         {/* Subtitle */}
@@ -40,14 +50,13 @@ const OnboardingScreen3: React.FC<OnboardingScreen3Props> = ({navigation}) => {
           <View style={styles.dot} />
           <View style={styles.dot} />
           <View style={[styles.dot, styles.activeDot]} />
-          <View style={styles.dot} />
         </View>
 
         {/* Get Started Button */}
         <TouchableOpacity
           style={styles.getStartedButton}
           activeOpacity={0.8}
-          onPress={() => navigation?.navigate('Onboarding4')}>
+          onPress={() => navigation?.navigate('Latest')}>
           <Text style={styles.getStartedText}>Get Started</Text>
         </TouchableOpacity>
       </View>
@@ -82,14 +91,16 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginBottom: 40,
   },
-  illustration: {
-    height: 300,
+  illustrationContainer: {
+    height: scale(310),
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 24,
+    marginBottom: scale(24),
+    width: '100%',
   },
-  illustrationText: {
-    fontSize: 80,
+  illustrationImage: {
+    width: '100%',
+    height: '100%',
   },
   subtitle: {
     fontSize: 18,

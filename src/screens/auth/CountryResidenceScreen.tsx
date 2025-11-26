@@ -39,7 +39,13 @@ const CountryResidenceScreen: React.FC<CountryResidenceScreenProps> = ({
         </Text>
 
         {/* Country Selection Input */}
-        <TouchableOpacity style={styles.countryInput}>
+        <TouchableOpacity
+          style={styles.countryInput}
+          onPress={() => navigation?.navigate('CountrySelection', {
+            onSelect: (country: string) => {
+              setSelectedCountry(country);
+            },
+          })}>
           <Text style={styles.flag}>🇷🇺</Text>
           <View style={styles.countryTextContainer}>
             <Text style={styles.countryLabel}>Country of residence</Text>
@@ -58,7 +64,7 @@ const CountryResidenceScreen: React.FC<CountryResidenceScreenProps> = ({
         <TouchableOpacity
           style={styles.continueButton}
           activeOpacity={0.8}
-          onPress={() => navigation?.navigate('TermsAndConditions')}>
+          onPress={() => navigation?.navigate('EmailSignup')}>
           <Text style={styles.continueButtonText}>Continue</Text>
         </TouchableOpacity>
       </ScrollView>

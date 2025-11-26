@@ -6,10 +6,82 @@ import {
   StyleSheet,
   SafeAreaView,
   ScrollView,
+  Image,
 } from 'react-native';
 
+// Icon Components using images
+const PayBillsIcon = () => (
+  <View style={styles.iconWrapper}>
+    <Image
+      source={require('../assets/profile icons/WhatsApp Image 2025-11-27 at 01.18.08_85bb81a3.jpg')}
+      style={styles.iconImage}
+      resizeMode="cover"
+    />
+  </View>
+);
+
+const AccountIcon = () => (
+  <View style={styles.iconWrapper}>
+    <Image
+      source={require('../assets/profile icons/WhatsApp Image 2025-11-27 at 01.18.57_40ce0346.jpg')}
+      style={styles.iconImage}
+      resizeMode="cover"
+    />
+  </View>
+);
+
+const TransferHistoryIcon = () => (
+  <View style={styles.iconWrapper}>
+    <Image
+      source={require('../assets/profile icons/WhatsApp Image 2025-11-27 at 01.19.13_47aef4fd.jpg')}
+      style={styles.iconImage}
+      resizeMode="cover"
+    />
+  </View>
+);
+
+const AddCardIcon = () => (
+  <View style={styles.iconWrapper}>
+    <Image
+      source={require('../assets/profile icons/WhatsApp Image 2025-11-27 at 01.20.53_dc9124fd.jpg')}
+      style={styles.iconImage}
+      resizeMode="cover"
+    />
+  </View>
+);
+
+const SettingsIcon = () => (
+  <View style={styles.iconWrapper}>
+    <Image
+      source={require('../assets/profile icons/WhatsApp Image 2025-11-27 at 01.21.18_3b50ae26.jpg')}
+      style={styles.iconImage}
+      resizeMode="cover"
+    />
+  </View>
+);
+
+const SupportIcon = () => (
+  <View style={styles.iconWrapper}>
+    <Image
+      source={require('../assets/profile icons/WhatsApp Image 2025-11-27 at 01.21.49_e454f238.jpg')}
+      style={styles.iconImage}
+      resizeMode="cover"
+    />
+  </View>
+);
+
+const LegalDocumentsIcon = () => (
+  <View style={styles.iconWrapper}>
+    <Image
+      source={require('../assets/profile icons/WhatsApp Image 2025-11-27 at 01.22.03_2274e765.jpg')}
+      style={styles.iconImage}
+      resizeMode="cover"
+    />
+  </View>
+);
+
 interface MenuItem {
-  icon: string;
+  iconComponent: React.ReactNode;
   title: string;
   description: string;
   route: string;
@@ -22,43 +94,43 @@ interface ProfileScreenProps {
 const ProfileScreen: React.FC<ProfileScreenProps> = ({navigation}) => {
   const menuItems: MenuItem[] = [
     {
-      icon: '💼',
+      iconComponent: <PayBillsIcon />,
       title: 'Pay Bills',
       description: 'Pay for bills like airtime',
       route: 'PayBills',
     },
     {
-      icon: '👤',
+      iconComponent: <AccountIcon />,
       title: 'Account',
       description: 'Manage your personal information',
       route: 'Account',
     },
     {
-      icon: '📄',
+      iconComponent: <TransferHistoryIcon />,
       title: 'Transfer History',
       description: 'View you transfer',
       route: 'TransferHistory',
     },
     {
-      icon: '💳',
+      iconComponent: <AddCardIcon />,
       title: 'Add Card',
       description: 'Add and manage your cards',
       route: 'AddCard',
     },
     {
-      icon: '🛡️',
+      iconComponent: <SettingsIcon />,
       title: 'Settings',
       description: 'Device settings and security',
       route: 'Settings',
     },
     {
-      icon: '❓',
+      iconComponent: <SupportIcon />,
       title: 'Support',
       description: 'Find answers to your queries',
       route: 'Support',
     },
     {
-      icon: 'ℹ️',
+      iconComponent: <LegalDocumentsIcon />,
       title: 'Legal Documents',
       description: 'Legal notices and agreements',
       route: 'LegalDocuments',
@@ -88,7 +160,7 @@ const ProfileScreen: React.FC<ProfileScreenProps> = ({navigation}) => {
               }
             }}>
             <View style={styles.menuIcon}>
-              <Text style={styles.iconText}>{item.icon}</Text>
+              {item.iconComponent}
             </View>
             <View style={styles.menuTextContainer}>
               <Text style={styles.menuTitle}>{item.title}</Text>
@@ -141,9 +213,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginRight: 16,
+    overflow: 'hidden',
   },
-  iconText: {
-    fontSize: 24,
+  iconWrapper: {
+    width: 48,
+    height: 48,
+    borderRadius: 24,
+    overflow: 'hidden',
+  },
+  iconImage: {
+    width: 48,
+    height: 48,
   },
   menuTextContainer: {
     flex: 1,

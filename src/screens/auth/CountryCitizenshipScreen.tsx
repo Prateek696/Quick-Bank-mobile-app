@@ -39,17 +39,33 @@ const CountryCitizenshipScreen: React.FC<CountryCitizenshipScreenProps> = ({
         </Text>
 
         {/* Country Selection Input */}
-        <TouchableOpacity style={styles.countryInput}>
+        <TouchableOpacity
+          style={styles.countryInput}
+          onPress={() => navigation?.navigate('CountrySelection', {
+            onSelect: (country: string) => {
+              setSelectedCountry(country);
+            },
+          })}>
           <Text style={styles.flag}>🇷🇺</Text>
           <View style={styles.countryTextContainer}>
             <Text style={styles.countryLabel}>Country of citizenship</Text>
             <Text style={styles.countryName}>{selectedCountry}</Text>
           </View>
-          <Text style={styles.clearIcon}>×</Text>
+          <TouchableOpacity
+            onPress={() => setSelectedCountry('')}
+            style={styles.clearButton}>
+            <Text style={styles.clearIcon}>×</Text>
+          </TouchableOpacity>
         </TouchableOpacity>
 
         {/* Add Country Button */}
-        <TouchableOpacity style={styles.addCountryButton}>
+        <TouchableOpacity
+          style={styles.addCountryButton}
+          onPress={() => navigation?.navigate('CountrySelection', {
+            onSelect: (country: string) => {
+              setSelectedCountry(country);
+            },
+          })}>
           <Text style={styles.addCountryText}>+ Add country</Text>
         </TouchableOpacity>
 
@@ -123,6 +139,9 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#2D3748',
     fontWeight: '500',
+  },
+  clearButton: {
+    padding: 4,
   },
   clearIcon: {
     fontSize: 24,

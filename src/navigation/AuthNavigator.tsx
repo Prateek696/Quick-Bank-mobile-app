@@ -1,11 +1,11 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import LoginScreen from '../screens/auth/LoginScreen';
+import SplashScreen from '../screens/auth/SplashScreen';
 import OnboardingScreen from '../screens/auth/OnboardingScreen';
 import OnboardingScreen2 from '../screens/auth/OnboardingScreen2';
 import OnboardingScreen3 from '../screens/auth/OnboardingScreen3';
-import OnboardingScreen4 from '../screens/auth/OnboardingScreen4';
-import OnboardingScreen5 from '../screens/auth/OnboardingScreen5';
+import LatestScreen from '../screens/auth/LatestScreen';
 import CountrySelectionScreen from '../screens/auth/CountrySelectionScreen';
 import CountryResidenceScreen from '../screens/auth/CountryResidenceScreen';
 import TermsAndConditionsScreen from '../screens/auth/TermsAndConditionsScreen';
@@ -24,16 +24,16 @@ interface AuthNavigatorProps {
 const AuthNavigator: React.FC<AuthNavigatorProps> = ({updateAuthState}) => {
   return (
     <Stack.Navigator
-      initialRouteName="Onboarding"
+      initialRouteName="Splash"
       screenOptions={{
         headerShown: false,
         cardStyle: {backgroundColor: '#FFFFFF'},
       }}>
+      <Stack.Screen name="Splash" component={SplashScreen} />
       <Stack.Screen name="Onboarding" component={OnboardingScreen} />
       <Stack.Screen name="Onboarding2" component={OnboardingScreen2} />
       <Stack.Screen name="Onboarding3" component={OnboardingScreen3} />
-      <Stack.Screen name="Onboarding4" component={OnboardingScreen4} />
-      <Stack.Screen name="Onboarding5" component={OnboardingScreen5} />
+      <Stack.Screen name="Latest" component={LatestScreen} />
       <Stack.Screen name="CountrySelection" component={CountrySelectionScreen} />
       <Stack.Screen name="CountryResidence" component={CountryResidenceScreen} />
       <Stack.Screen name="TermsAndConditions" component={TermsAndConditionsScreen} />
@@ -43,7 +43,12 @@ const AuthNavigator: React.FC<AuthNavigatorProps> = ({updateAuthState}) => {
       <Stack.Screen name="BirthPlace" component={BirthPlaceScreen} />
       <Stack.Screen name="DatePicker" component={DatePickerScreen} />
       <Stack.Screen name="Login">
-        {() => <LoginScreen updateAuthState={updateAuthState} />}
+        {({navigation}) => (
+          <LoginScreen
+            updateAuthState={updateAuthState}
+            navigation={navigation}
+          />
+        )}
       </Stack.Screen>
     </Stack.Navigator>
   );
